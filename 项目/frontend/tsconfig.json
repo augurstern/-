@@ -1,0 +1,29 @@
+{
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": false, 
+    "importsNotUsedAsValues": "remove",
+    "preserveValueImports": false,
+    "isolatedModules": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

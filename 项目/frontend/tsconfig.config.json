@@ -1,0 +1,12 @@
+{
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["node"],
+    "preserveValueImports": false,
+    "importsNotUsedAsValues": "remove",
+    "verbatimModuleSyntax": false
+  }
+} 

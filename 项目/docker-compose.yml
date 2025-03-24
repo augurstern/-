@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # 前端服务
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    restart: always
+
+  # 后端服务
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=contract_management
+      - JWT_SECRET=your_jwt_secret_key
+      - JWT_EXPIRES_IN=1d
+      - PORT=3000
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/backups:/app/backups
+    networks:
+      - app-network
+    restart: always
+
+  # 数据库服务
+  db:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=contract_management
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+    restart: always
+
+# 定义数据卷
+volumes:
+  pgdata:
+
+# 定义网络
+networks:
+  app-network:
+    driver: bridge 

@@ -1,0 +1,21 @@
+:root {
+  /* 品牌色 */
+  --primary-color: #409EFF;
+  --success-color: #67C23A;
+  --warning-color: #E6A23C;
+  --danger-color: #F56C6C;
+
+  /* 中性色 */
+  --text-primary: #303133;
+  --text-regular: #606266;
+  --border-color: #DCDFE6;
+
+  /* 尺寸 */
+  --font-size-base: 14px;
+  --font-size-small: 12px;
+  --spacing-base: 20px;
+  --spacing-small: 10px;
+
+  /* 圆角 */
+  --border-radius-base: 4px;
+}

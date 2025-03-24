@@ -1,0 +1,42 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm ci
+        cd ../backend
+        npm ci
+
+    - name: Start services
+      run: |
+        cd backend
+        npm run start:dev &
+        cd ../frontend
+        npm run dev &
+
+    - name: Run Cypress tests
+      run: |
+        cd frontend
+        npx cypress run --config baseUrl=http://localhost:5173
+
+    - name: Cleanup test database
+      run: rm backend/test-db.sqlite

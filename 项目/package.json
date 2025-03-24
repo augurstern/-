@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@xstate/vue": "^4.0.2",
+    "concurrently": "^9.1.2",
+    "xstate": "^5.19.2"
+  },
+  "devDependencies": {
+    "cypress": "^14.2.0",
+    "sass": "^1.86.0"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "start": "concurrently --kill-others \"npm:start:frontend\" \"npm:start:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run start",
+    "start:frontend": "cd frontend && npm run preview",
+    "start:backend": "cd backend && npm run start"
+  }
+}
